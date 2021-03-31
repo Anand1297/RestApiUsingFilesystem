@@ -89,7 +89,7 @@ await fs.writeFile('data.json', JSON.stringify(data), function (err) {
   if (err) return err;
   console.log('Replaced!');
 });
-return data;
+return await getData();
 }
 }
 
@@ -112,7 +112,7 @@ await fs.writeFile('data.json', JSON.stringify(data), function (err) {
   console.log('Replaced!');
 });
 
-return data;
+return await getData();
 }
 }
 

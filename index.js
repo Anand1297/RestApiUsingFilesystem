@@ -2,6 +2,7 @@ const Joi = require('joi');
 const express= require('express');
 const routes= require('./routes/router');
 const createError=require('http-errors');
+const fetch = require('node-fetch');
 
 const app= express();
 
@@ -36,8 +37,31 @@ next();
     });
     });
 
+    async function getWeather() {
+        const product = await fetch(
+                "https://productapifilesystem.herokuapp.com/1"
+            );
+        let response = await product.text();
+        console.log(response);
+    }
     
+    getWeather();
+
+
+
+
+
+    // fetch('https://productapifilesystem.herokuapp.com/')
+    // .then(response => response.json())
+    // .then(data => console.log(data));
+
+
+
+
+
+
+
 const port= process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log(`Listening on port ${port}`);
-})
+});
